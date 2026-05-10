@@ -1,6 +1,6 @@
 An AI-powered VSCode extension that checks code quality and displays colorful scores in the status bar.
 
-一个 VSCode 扩展，使用 AI 检查代码质量并在状态栏显示多彩分数。
+一个 VSCode 扩展，使用 AI 检查代码质量并在状态栏显示彩色分数。
 
 ---
 
@@ -8,7 +8,7 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 
 - 彩色分数显示（红色 → 橙色 → 黄色 → 黄绿色 → 绿色）
 - AI集成（本地模型、OpenAI 或自定义 API）
-- 自动更新（支持配置防抖时间）
+- 自动更新分数（支持配置防抖时间）
 - 快捷键（Ctrl+Alt+E / Cmd+Alt+E）
 - 可配置的系统提示词
 
