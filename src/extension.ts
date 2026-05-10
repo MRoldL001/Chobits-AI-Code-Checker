@@ -77,7 +77,7 @@ async function checkCodeQuality() {
   }
 
   statusBarItem.text = '$(sync~spin) 检查中...';
-  statusBarItem.color = undefined;
+  statusBarItem.color = new vscode.ThemeColor('statusBar.foreground');
 
   const code = editor.document.getText();
 
@@ -96,7 +96,7 @@ async function checkCodeQuality() {
     console.error('代码质量检查错误:', error);
     if (statusBarItem) {
       statusBarItem.text = '$(error) 检查失败';
-      statusBarItem.color = new vscode.ThemeColor('statusBarItem.foreground');
+      statusBarItem.color = new vscode.ThemeColor('statusBar.foreground');
     }
   }
 }
@@ -108,7 +108,7 @@ function updateStatusBarItem(score?: number) {
 
   if (score === undefined || score < 0) {
     statusBarItem.text = '$(code) 检查代码';
-    statusBarItem.color = new vscode.ThemeColor('statusBarItem.foreground');
+    statusBarItem.color = new vscode.ThemeColor('statusBar.foreground');
     statusBarItem.backgroundColor = undefined;
     return;
   }
@@ -117,20 +117,20 @@ function updateStatusBarItem(score?: number) {
   statusBarItem.text = `$(code) ${score} ${label}`;
 
   if (score >= 90) {
-    statusBarItem.backgroundColor = '#000000' as any;
-    statusBarItem.color = '#166534';
+    statusBarItem.backgroundColor = '#3c3c3c' as any;
+    statusBarItem.color = '#2ea043';
   } else if (score >= 80) {
-    statusBarItem.backgroundColor = '#000000' as any;
-    statusBarItem.color = '#0369a1';
+    statusBarItem.backgroundColor = '#3c3c3c' as any;
+    statusBarItem.color = '#3794ff';
   } else if (score >= 70) {
-    statusBarItem.backgroundColor = '#000000' as any;
-    statusBarItem.color = '#854d0e';
+    statusBarItem.backgroundColor = '#3c3c3c' as any;
+    statusBarItem.color = '#dcdcaa';
   } else if (score >= 60) {
-    statusBarItem.backgroundColor = '#000000' as any;
-    statusBarItem.color = '#9a3412';
+    statusBarItem.backgroundColor = '#3c3c3c' as any;
+    statusBarItem.color = '#ce9178';
   } else {
-    statusBarItem.backgroundColor = '#000000' as any;
-    statusBarItem.color = '#991b1b';
+    statusBarItem.backgroundColor = '#3c3c3c' as any;
+    statusBarItem.color = '#f14c4c';
   }
 }
 

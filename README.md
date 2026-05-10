@@ -10,25 +10,25 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 
 ---
 
-## ✨ 功能
+## 功能
 
-- 彩色分数显示（红色 → 橙色 → 黄色 → 蓝色 → 绿色）
+- 彩色分数显示（红 → 橙 → 黄 → 蓝 → 绿）
 - AI集成（本地 Ollama 或远程 API）
 - 自动更新分数（支持配置防抖时间）
 - 快捷键（Ctrl+Alt+E / Cmd+Alt+E）
 - 可配置的系统提示词
 
-## 📊 分数等级
+## 分数等级
 
-| 分数范围 | 等级 |
-|---------|------|
-| 90-100 | 优秀 |
-| 80-89 | 良好 |
-| 70-79 | 一般 |
-| 60-69 | 较差 |
-| 0-59 | 严重 |
+| 分数范围 | 等级 | 颜色 |
+|---------|------|------|
+| 90-100 | 优秀 | `#2ea043` |
+| 80-89 | 良好 | `#3794ff` |
+| 70-79 | 一般 | `#dcdcaa` |
+| 60-69 | 较差 | `#ce9178` |
+| 0-59 | 严重 | `#f14c4c` |
 
-## 🚀 快速开始
+## 快速开始
 
 ### 安装
 
@@ -62,7 +62,7 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 
 打开代码文件，插件自动检查并在状态栏显示分数，或按 `Ctrl+Alt+E` / `Cmd+Alt+E` 手动触发。
 
-## ⚙️ 配置
+## 配置
 
 | 设置 | 描述 | 默认值 |
 |------|------|--------|
@@ -76,7 +76,7 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 | `codeChecker.statusBarPosition` | 状态栏位置（left/right） | `right` |
 | `codeChecker.systemPrompt` | AI 系统提示词 | 见 package.json |
 
-## 🛠️ 开发者 API
+## 开发者 API
 
 | 函数 | 描述 |
 |------|------|
