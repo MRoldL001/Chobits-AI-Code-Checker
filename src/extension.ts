@@ -123,17 +123,19 @@ function updateStatusBarItem(score?: number) {
 
   statusBarItem.text = `$(code) ${score} ${label}`;
   statusBarItem.color = '#ffffff';
+  statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.background');
 
-  if (score >= 90) {
-    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.successBackground');
-  } else if (score >= 80) {
-    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.remoteBackground');
-  } else if (score >= 70) {
-    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.warningBackground');
-  } else if (score >= 60) {
-    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.notebookCellSelectedBackground');
-  } else {
-    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.errorBackground');
+  const colorMap: { [key: string]: string } = {
+    '#28a745': 'statusBarItem.successBackground',
+    '#1e90ff': 'statusBarItem.remoteBackground',
+    '#ffc107': 'statusBarItem.warningBackground',
+    '#fd7e14': 'statusBarItem.notebookCellSelectedBackground',
+    '#dc3545': 'statusBarItem.errorBackground'
+  };
+
+  const themeColorKey = colorMap[color];
+  if (themeColorKey) {
+    statusBarItem.backgroundColor = new vscode.ThemeColor(themeColorKey);
   }
 }
 
