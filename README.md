@@ -5,11 +5,11 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 
 ## 🎯 功能
 
-- **彩色分数显示**
-- **AI集成**
-- **支持配置防抖时间**
-- **快捷键触发**
-- **可自由配置的系统提示词**
+- 🎨 **彩色分数显示**（红色 → 橙色 → 黄色 → 黄绿色 → 绿色）
+- 🤖 **AI集成**（本地模型、OpenAI 或自定义 API）
+- ⚡ **自动更新**（支持配置防抖时间）
+- ⌨️ **快捷键**（Ctrl+Alt+E / Cmd+Alt+E）
+- 📊 **可配置的系统提示词**
 
 ## 📊 分数等级
 
@@ -62,8 +62,27 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 | `codeChecker.autoUpdate` | 启用自动更新 | `true` |
 | `codeChecker.updateDebounceMs` | 防抖时间（毫秒） | `2000` |
 
----
+## 🔧 开发者 API
 
-## 📄 许可证
+```typescript
+import { getCurrentScore, getCurrentScoreColor, getCurrentScoreLabel, getCurrentScoreHexColor } from './extension';
+import { ScoreColor, getScoreColor, getScoreLabel, getHexColor, SCORE_RANGES } from './scoreSystem';
 
-MIT
+// 获取当前分数
+const score = getCurrentScore(); // 数字 (0-100, 如果还未检查则为-1)
+
+// 获取当前分数颜色枚举
+const color = getCurrentScoreColor(); // ScoreColor
+
+// 获取当前分数等级
+const label = getCurrentScoreLabel(); // 字符串
+
+// 获取当前分数十六进制颜色
+const hexColor = getCurrentScoreHexColor(); // 字符串 (例如 "#ff4444")
+
+// 也可以直接使用分数系统函数
+import { getScoreColor, getScoreLabel, getHexColor } from './scoreSystem';
+const color = getScoreColor(85); // ScoreColor.YELLOW_GREEN
+const label = getScoreLabel(85); // "良好"
+const hex = getHexColor(ScoreColor.GREEN); // "#00cc00"
+```
