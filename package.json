@@ -94,8 +94,8 @@
     "keybindings": [
       {
         "command": "codeChecker.checkCodeQuality",
-        "key": "ctrl+alt+c",
-        "mac": "cmd+alt+c",
+        "key": "ctrl+alt+e",
+        "mac": "cmd+alt+e",
         "when": "editorTextFocus"
       }
     ]
