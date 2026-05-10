@@ -87,7 +87,6 @@ async function checkCodeQuality() {
   }
 
   statusBarItem.text = '$(sync~spin) 检查中...';
-  statusBarItem.backgroundColor = undefined;
   statusBarItem.color = undefined;
 
   const code = editor.document.getText();
@@ -102,37 +101,29 @@ async function checkCodeQuality() {
   } catch (error) {
     console.error('代码质量检查错误:', error);
     statusBarItem.text = '$(error) 检查失败';
-    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.errorBackground');
-    statusBarItem.color = '#ffffff';
+    statusBarItem.color = '#f44336';
   }
 }
 
 function updateStatusBarItem(score?: number) {
   if (score === undefined || score < 0) {
     statusBarItem.text = '$(code) 检查代码';
-    statusBarItem.backgroundColor = undefined;
     statusBarItem.color = undefined;
     return;
   }
 
   const label = getScoreLabel(score);
-
   statusBarItem.text = `$(code) ${score} ${label}`;
 
   if (score >= 90) {
-    statusBarItem.backgroundColor = undefined;
     statusBarItem.color = '#00d26a';
   } else if (score >= 80) {
-    statusBarItem.backgroundColor = undefined;
     statusBarItem.color = '#4fc3f7';
   } else if (score >= 70) {
-    statusBarItem.backgroundColor = undefined;
     statusBarItem.color = '#ffeb3b';
   } else if (score >= 60) {
-    statusBarItem.backgroundColor = undefined;
     statusBarItem.color = '#ff9800';
   } else {
-    statusBarItem.backgroundColor = undefined;
     statusBarItem.color = '#f44336';
   }
 }
