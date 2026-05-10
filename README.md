@@ -26,9 +26,17 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 
 ### 安装
 
+#### 方式一：从 VSCode 市场安装（推荐）
+
 1. 在 VSCode 中打开扩展视图（Ctrl+Shift+X / Cmd+Shift+X）
 2. 搜索 "Code Checker"
 3. 点击安装
+
+#### 方式二：从发行版安装
+
+1. 从 [GitHub Releases](https://github.com/MRoldL001/AI-Code-Checker/releases) 下载 `.vsix` 文件
+2. 在 VSCode 中执行：`Extensions: Install from VSIX...`
+3. 选择下载的 `.vsix` 文件
 
 ### 配置 AI
 
