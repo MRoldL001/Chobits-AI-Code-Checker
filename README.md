@@ -1,6 +1,7 @@
 An AI-powered VSCode extension that checks code quality and displays colorful scores in the status bar.
 
 一个 VSCode 扩展，使用 AI 检查代码质量并在状态栏显示多彩分数。
+
 ---
 
 ## 功能
