@@ -1,7 +1,7 @@
 {
-  "name": "code-checker",
-  "displayName": "代码检查器",
-  "description": "智能代码质量检查工具，AI驱动评分，多彩状态栏显示",
+  "name": "ai-code-checker",
+  "displayName": "AI Code Checker",
+  "description": "Smart Code Quality Checker: AI Scoring & Colorful Status Bar.",
   "version": "1.0.0",
   "publisher": "MRoldL001",
   "repository": {
