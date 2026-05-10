@@ -43,9 +43,10 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 #### 本地模型（推荐）
 
 1. 安装 [Ollama](https://ollama.ai/)
-2. 下载模型：`ollama pull llama2`
+2. 下载模型：`ollama pull llama2`（或你喜欢的其他模型）
 3. 启动 Ollama：`ollama serve`
 4. 设置 `codeChecker.aiProvider` 为 `local`
+5. 设置 `codeChecker.local.model` 为你的模型名称
 
 #### 远程 API
 
@@ -60,6 +61,7 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 | 设置 | 描述 | 默认值 |
 |------|------|--------|
 | `codeChecker.aiProvider` | AI 服务提供商（local=本地, remote=远程） | `local` |
+| `codeChecker.local.model` | 本地 Ollama 模型名称 | `llama2` |
 | `codeChecker.remote.endpoint` | 远程 API 地址 | - |
 | `codeChecker.remote.apiKey` | 远程 API 密钥（可选） | - |
 | `codeChecker.remote.model` | 远程 API 模型名称 | - |

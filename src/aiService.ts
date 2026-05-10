@@ -4,6 +4,9 @@ import axios from 'axios';
 export interface AIConfig {
   provider: 'local' | 'remote';
   systemPrompt: string;
+  local?: {
+    model: string;
+  };
   remote?: {
     endpoint: string;
     apiKey: string;
@@ -75,11 +78,13 @@ export class AIService {
   }
 
   private async callLocalModel(code: string): Promise<number> {
+    const model = this.config.local?.model || 'llama2';
+
     try {
       const response = await axios.post(
         'http://localhost:11434/api/chat',
         {
-          model: 'llama2',
+          model: model,
           messages: [
             {
               role: 'system',
@@ -126,6 +131,9 @@ export function getConfigFromVSCode(): AIConfig {
   return {
     provider: config.get<'local' | 'remote'>('aiProvider', 'local'),
     systemPrompt: config.get<string>('systemPrompt', ''),
+    local: {
+      model: config.get<string>('local.model', 'llama2')
+    },
     remote: {
       endpoint: config.get<string>('remote.endpoint', ''),
       apiKey: config.get<string>('remote.apiKey', ''),

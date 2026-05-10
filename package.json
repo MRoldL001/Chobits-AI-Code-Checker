@@ -43,6 +43,11 @@
           "default": "local",
           "description": "选择AI服务提供商（local=本地Ollama, remote=远程API）"
         },
+        "codeChecker.local.model": {
+          "type": "string",
+          "default": "llama2",
+          "description": "本地Ollama模型名称"
+        },
         "codeChecker.remote.endpoint": {
           "type": "string",
           "default": "",
