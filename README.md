@@ -5,11 +5,11 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 
 ## 🎨 功能
 
-- 🎨 **彩色分数显示**（红色 → 橙色 → 黄色 → 黄绿色 → 绿色）
-- 🤖 **AI集成**（本地模型、OpenAI 或自定义 API）
-- ⚡ **自动更新**（支持配置防抖时间）
-- ⌨️ **快捷键**（Ctrl+Alt+E / Cmd+Alt+E）
-- 📊 **可配置的系统提示词**
+- **彩色分数显示**
+- **AI集成**
+- **支持配置防抖时间**
+- **快捷键触发**
+- **可自由配置的系统提示词**
 
 ---
 
