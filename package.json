@@ -4,6 +4,7 @@
   "description": "Smart Code Quality Checker: AI Scoring & Colorful Status Bar.",
   "version": "1.0.0",
   "publisher": "MRoldL001",
+  "icon": "ai-code-checker.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/MRoldL001/AI-Code-Checker.git"
