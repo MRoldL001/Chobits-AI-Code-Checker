@@ -3,7 +3,7 @@
   "displayName": "代码检查器",
   "description": "智能代码质量检查工具，AI驱动评分，多彩状态栏显示",
   "version": "1.0.0",
-  "publisher": "mefisto04",
+  "publisher": "MRoldL001",
   "engines": {
     "vscode": "^1.74.0"
   },
