@@ -120,20 +120,20 @@ function updateStatusBarItem(score?: number) {
   statusBarItem.text = `$(code) ${score} ${label}`;
 
   if (score >= 90) {
-    statusBarItem.backgroundColor = { id: 'statusBar.background' };
-    statusBarItem.color = '#28a745';
+    statusBarItem.backgroundColor = '#28a745';
+    statusBarItem.color = '#ffffff';
   } else if (score >= 80) {
-    statusBarItem.backgroundColor = { id: 'statusBar.background' };
-    statusBarItem.color = '#1e90ff';
+    statusBarItem.backgroundColor = '#0078d4';
+    statusBarItem.color = '#ffffff';
   } else if (score >= 70) {
-    statusBarItem.backgroundColor = { id: 'statusBar.background' };
-    statusBarItem.color = '#ffc107';
+    statusBarItem.backgroundColor = '#d29922';
+    statusBarItem.color = '#ffffff';
   } else if (score >= 60) {
-    statusBarItem.backgroundColor = { id: 'statusBar.background' };
-    statusBarItem.color = '#fd7e14';
+    statusBarItem.backgroundColor = '#ca6f1e';
+    statusBarItem.color = '#ffffff';
   } else {
-    statusBarItem.backgroundColor = { id: 'statusBar.background' };
-    statusBarItem.color = '#dc3545';
+    statusBarItem.backgroundColor = '#c21e2a';
+    statusBarItem.color = '#ffffff';
   }
 }
 
