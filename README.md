@@ -1,15 +1,8 @@
-```text
- __  __           _        __ _
- \ \/ /___ _ __ | |_ ___ / _| |_   _
-  \  // _ \ '_ \| __/ _ \ |_| __| | | |
-  /  \  __/ | | | ||  __/  _| |_  |_| |
- /_/\_\___|_| |_|\__\___|_|  \__| (_) |
-```
----
-智能代码质量检查工具，AI驱动评分，多彩状态栏显示
+An AI-powered VSCode extension that checks code quality and displays colorful scores in the status bar.
 
 一个 VSCode 扩展，使用 AI 检查代码质量并在状态栏显示多彩分数。
 ---
+
 ## 🎨 功能
 
 - 🎨 **彩色分数显示**（红色 → 橙色 → 黄色 → 黄绿色 → 绿色）
@@ -79,7 +72,7 @@ code --install-extension code-checker-1.0.0.vsix
 
 1. 打开任意代码文件
 2. 插件会自动检查代码质量并在状态栏显示分数
-3. 按 `Ctrl+Alt+C` / `Cmd+Alt+C` 手动触发检查
+3. 按 `Ctrl+Alt+E` / `Cmd+Alt+E` 手动触发检查
 
 ---
 
@@ -194,7 +187,7 @@ vsce package
 
 ## ⌨️ 命令
 
-- **代码检查器：检查代码质量** - 手动触发代码质量检查（Ctrl+Alt+C / Cmd+Alt+C）
+- **代码检查器：检查代码质量** - 手动触发代码质量检查（Ctrl+Alt+E / Cmd+Alt+E）
 
 ---
 
