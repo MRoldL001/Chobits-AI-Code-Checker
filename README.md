@@ -10,7 +10,6 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 - ⚡ **自动更新**（支持配置防抖时间）
 - ⌨️ **快捷键**（Ctrl+Alt+E / Cmd+Alt+E）
 - 📊 **可配置的系统提示词**
-- 📍 **状态栏位置**（左侧或右侧）
 
 ---
 
