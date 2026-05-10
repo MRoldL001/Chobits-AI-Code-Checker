@@ -4,7 +4,7 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 
 ---
 
-## 功能
+## ✨ 功能
 
 - 彩色分数显示（红色 → 橙色 → 黄色 → 黄绿色 → 绿色）
 - AI集成（本地模型、OpenAI 或自定义 API）
@@ -12,7 +12,7 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 - 快捷键（Ctrl+Alt+E / Cmd+Alt+E）
 - 可配置的系统提示词
 
-## 分数等级
+## 📊 分数等级
 
 | 分数范围 | 颜色 | 等级 |
 |---------|------|------|
@@ -22,7 +22,7 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 | 60-69 | 橙色 (#fd7e14) | 较差 |
 | 0-59 | 红色 (#dc3545) | 严重 |
 
-## 快速开始
+## 🚀 快速开始
 
 ### 安装
 
@@ -51,7 +51,7 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 
 打开代码文件，插件自动检查并在状态栏显示分数，或按 `Ctrl+Alt+E` / `Cmd+Alt+E` 手动触发。
 
-## 配置
+## ⚙️ 配置
 
 | 设置 | 描述 | 默认值 |
 |------|------|--------|
@@ -63,7 +63,7 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 | `codeChecker.autoUpdate` | 启用自动更新 | `true` |
 | `codeChecker.updateDebounceMs` | 防抖时间（毫秒） | `2000` |
 
-## 开发者 API
+## 🛠️ 开发者 API
 
 | 函数 | 描述 |
 |------|------|
