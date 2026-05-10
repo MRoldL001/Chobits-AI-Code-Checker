@@ -117,19 +117,19 @@ function updateStatusBarItem(score?: number) {
   statusBarItem.text = `$(code) ${score} ${label}`;
 
   if (score >= 90) {
-    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.background');
+    statusBarItem.backgroundColor = '#000000' as any;
     statusBarItem.color = '#166534';
   } else if (score >= 80) {
-    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.background');
+    statusBarItem.backgroundColor = '#000000' as any;
     statusBarItem.color = '#0369a1';
   } else if (score >= 70) {
-    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.background');
+    statusBarItem.backgroundColor = '#000000' as any;
     statusBarItem.color = '#854d0e';
   } else if (score >= 60) {
-    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.background');
+    statusBarItem.backgroundColor = '#000000' as any;
     statusBarItem.color = '#9a3412';
   } else {
-    statusBarItem.backgroundColor = new vscode.ThemeColor('statusBarItem.background');
+    statusBarItem.backgroundColor = '#000000' as any;
     statusBarItem.color = '#991b1b';
   }
 }

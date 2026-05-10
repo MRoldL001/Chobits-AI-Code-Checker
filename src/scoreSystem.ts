@@ -10,11 +10,11 @@ export interface ScoreRange {
 }
 
 export const SCORE_RANGES: ScoreRange[] = [
-  { min: 0, max: 59, color: '#dc3545', label: '严重' },
-  { min: 60, max: 69, color: '#fd7e14', label: '较差' },
-  { min: 70, max: 79, color: '#ffc107', label: '一般' },
-  { min: 80, max: 89, color: '#1e90ff', label: '良好' },
-  { min: 90, max: 100, color: '#28a745', label: '优秀' }
+  { min: 0, max: 59, color: '#991b1b', label: '严重' },
+  { min: 60, max: 69, color: '#9a3412', label: '较差' },
+  { min: 70, max: 79, color: '#854d0e', label: '一般' },
+  { min: 80, max: 89, color: '#0369a1', label: '良好' },
+  { min: 90, max: 100, color: '#166534', label: '优秀' }
 ];
 
 export function getScoreColor(score: number): string {
