@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+out/
+
+# VSCode test environment
+.vscode-test/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+
+# VSCode settings (per user)
+.vscode/
+
+# Test coverage
+coverage/
+
+# Package files
+*.tgz
