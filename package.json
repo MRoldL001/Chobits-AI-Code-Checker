@@ -2,7 +2,7 @@
   "name": "chobits-ai-code-checker",
   "displayName": "Chobits AI Code Checker",
   "description": "Smart Code Quality Checker: AI Scoring & Colorful Status Bar.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "publisher": "MRoldL001",
   "icon": "ai-code-checker.png",
   "repository": {
@@ -36,7 +36,7 @@
             "remote"
           ],
           "default": "local",
-          "description": "选择AI服务提供商（local=本地Ollama, remote=远程API)"
+          "description": "选择AI服务提供商（local=本地Ollama, remote=远程API）"
         },
         "codeChecker.local.model": {
           "type": "string",
@@ -46,7 +46,7 @@
         "codeChecker.remote.endpoint": {
           "type": "string",
           "default": "",
-          "description": "远程API地址（支持OpenAI兼容格式)"
+          "description": "远程API地址（支持OpenAI兼容格式）"
         },
         "codeChecker.remote.apiKey": {
           "type": "string",
@@ -66,7 +66,7 @@
         "codeChecker.updateDebounceMs": {
           "type": "number",
           "default": 2000,
-          "description": "自动更新的防抖时间（毫秒)"
+          "description": "自动更新的防抖时间（毫秒）"
         },
         "codeChecker.statusBarPosition": {
           "type": "string",
