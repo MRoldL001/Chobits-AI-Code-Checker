@@ -20,7 +20,7 @@ function createStatusBarItem(context: vscode.ExtensionContext): vscode.StatusBar
   statusBarItem = vscode.window.createStatusBarItem(alignment, 100);
   statusBarItem.command = 'codeChecker.checkCodeQuality';
   statusBarItem.text = '$(code) 检查代码';
-  statusBarItem.tooltip = '点击手动检查代码质量';
+  statusBarItem.tooltip = '检查代码质量';
   statusBarItem.show();
 
   context.subscriptions.push(statusBarItem);

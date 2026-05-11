@@ -68,7 +68,7 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 | 设置                               | 描述                            | 默认值            |
 | -------------------------------- | ----------------------------- | -------------- |
 | `codeChecker.aiProvider`         | AI 服务提供商（local=本地, remote=远程） | `local`        |
-| `codeChecker.local.model`        | 本地 Ollama 模型名称                | `llama2`       |
+| `codeChecker.local.model`        | 本地 Ollama 模型名称                | -              |
 | `codeChecker.remote.endpoint`    | 远程 API 地址                     | -              |
 | `codeChecker.remote.apiKey`      | 远程 API 密钥（可选）                 | -              |
 | `codeChecker.remote.model`       | 远程 API 模型名称                   | -              |
