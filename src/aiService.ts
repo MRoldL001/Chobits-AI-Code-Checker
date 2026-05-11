@@ -1,6 +1,8 @@
 import * as vscode from 'vscode';
 import axios from 'axios';
 
+type Diagnostic = [vscode.Uri, vscode.Diagnostic[]];
+
 export interface AIConfig {
   provider: 'local' | 'remote';
   systemPrompt: string;
@@ -25,14 +27,14 @@ export class AIService {
     this.config = config;
   }
 
-  public async checkCodeQuality(code: string): Promise<number> {
+  public async checkCodeQuality(code: string, problems: Diagnostic[]): Promise<number> {
     try {
       switch (this.config.provider) {
         case 'remote':
-          return await this.callRemoteAPI(code);
+          return await this.callRemoteAPI(code, problems);
         case 'local':
         default:
-          return await this.callLocalModel(code);
+          return await this.callLocalModel(code, problems);
       }
     } catch (error) {
       console.error('AI service error:', error);
@@ -41,7 +43,34 @@ export class AIService {
     }
   }
 
-  private async callRemoteAPI(code: string): Promise<number> {
+  private formatProblems(problems: Diagnostic[]): string {
+    const allProblems: string[] = [];
+
+    const spellingKeywords = ['spelling', 'spell', 'typo', 'misspelled', 'typographical', 'spelling error'];
+
+    for (const [uri, diagnostics] of problems) {
+      for (const diagnostic of diagnostics) {
+        const message = diagnostic.message.toLowerCase();
+        if (spellingKeywords.some(keyword => message.includes(keyword))) {
+          continue;
+        }
+
+        const line = diagnostic.range.start.line + 1;
+        const severity = diagnostic.severity === vscode.DiagnosticSeverity.Error ? 'Error' :
+                        diagnostic.severity === vscode.DiagnosticSeverity.Warning ? 'Warning' : 'Info';
+        const shortMessage = diagnostic.message.replace(/\n/g, ' ').substring(0, 100);
+        allProblems.push(`[${severity}] Line ${line}: ${shortMessage}`);
+      }
+    }
+
+    if (allProblems.length === 0) {
+      return 'No significant problems detected.';
+    }
+
+    return `VS Code Problems detected (${allProblems.length} issues, spelling ignored):\n${allProblems.slice(0, 20).join('\n')}${allProblems.length > 20 ? '\n...and more' : ''}`;
+  }
+
+  private async callRemoteAPI(code: string, problems: Diagnostic[]): Promise<number> {
     if (!this.config.remote?.endpoint) {
       throw new Error('未配置远程API地址');
     }
@@ -54,6 +83,8 @@ export class AIService {
       headers['Authorization'] = `Bearer ${this.config.remote.apiKey}`;
     }
 
+    const problemsInfo = this.formatProblems(problems);
+
     const response = await axios.post(
       this.config.remote.endpoint,
       {
@@ -65,7 +96,7 @@ export class AIService {
           },
           {
             role: 'user',
-            content: `请评估以下代码的质量:\n\n${code}`
+            content: `Please evaluate the following code quality:\n\n\`\`\`\n${code}\n\`\`\`\n\n${problemsInfo}`
           }
         ],
         temperature: 0.3
@@ -77,8 +108,9 @@ export class AIService {
     return this.parseScore(content);
   }
 
-  private async callLocalModel(code: string): Promise<number> {
+  private async callLocalModel(code: string, problems: Diagnostic[]): Promise<number> {
     const model = this.config.local?.model || 'llama2';
+    const problemsInfo = this.formatProblems(problems);
 
     try {
       const response = await axios.post(
@@ -92,7 +124,7 @@ export class AIService {
             },
             {
               role: 'user',
-              content: `请评估以下代码的质量:\n\n${code}`
+              content: `Please evaluate the following code quality:\n\n\`\`\`\n${code}\n\`\`\`\n\n${problemsInfo}`
             }
           ],
           stream: false

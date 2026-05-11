@@ -6,6 +6,7 @@ let aiService: AIService | undefined;
 let statusBarItem: vscode.StatusBarItem | undefined;
 let debounceTimer: NodeJS.Timeout | null = null;
 let currentScore: number = -1;
+let currentDocumentUri: string | undefined = undefined;
 
 function createStatusBarItem(context: vscode.ExtensionContext): vscode.StatusBarItem {
   if (statusBarItem) {
@@ -97,20 +98,39 @@ async function checkCodeQuality() {
     return;
   }
 
+  const documentUri = editor.document.uri.toString();
+
+  const config = vscode.workspace.getConfiguration('codeChecker');
+  const allowedExtensions = config.get<string[]>('codeFileExtensions', []);
+
+  const fileName = editor.document.fileName;
+  const fileExtension = fileName.split('.').pop()?.toLowerCase() || '';
+
+  if (!allowedExtensions.includes(fileExtension)) {
+    statusBarItem.text = '$(code) 非代码文件';
+    statusBarItem.color = new vscode.ThemeColor('statusBar.foreground');
+    currentScore = -1;
+    return;
+  }
+
   statusBarItem.text = '$(sync~spin) 检查中...';
   statusBarItem.color = new vscode.ThemeColor('statusBar.foreground');
 
   const code = editor.document.getText();
+  const currentUri = editor.document.uri.toString();
+  const allProblems = vscode.languages.getDiagnostics();
+  const problems = allProblems.filter(([uri]) => uri.toString() === currentUri);
 
   try {
     if (!aiService) {
       aiService = new AIService(getConfigFromVSCode());
     }
 
-    const score = await aiService.checkCodeQuality(code);
+    const score = await aiService.checkCodeQuality(code, problems);
 
-    if (score >= 0) {
+    if (score >= 0 && documentUri === editor.document.uri.toString()) {
       currentScore = score;
+      currentDocumentUri = documentUri;
       updateStatusBarItem(score);
     }
   } catch (error) {

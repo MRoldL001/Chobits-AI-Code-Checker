@@ -15,6 +15,8 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 - 彩色分数显示（红 → 橙 → 黄 → 蓝 → 绿）
 - AI集成（本地 Ollama 或远程 API）
 - 自动更新分数（支持配置防抖时间）
+- VS Code Problems 集成（AI 参考 linter 报错评分）
+- 只检查代码文件（支持自定义后缀名列表）
 - 快捷键（Ctrl+Alt+E / Cmd+Alt+E）
 - 可配置的系统提示词
 
@@ -64,17 +66,18 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 
 ## ⚙️ 配置
 
-| 设置                              | 描述                            | 默认值            |
-| ------------------------------- | ----------------------------- | -------------- |
-| `codeChecker.aiProvider`        | AI 服务提供商（local=本地, remote=远程） | `local`        |
-| `codeChecker.local.model`       | 本地 Ollama 模型名称                | `llama2`       |
-| `codeChecker.remote.endpoint`   | 远程 API 地址                     | -              |
-| `codeChecker.remote.apiKey`     | 远程 API 密钥（可选）                 | -              |
-| `codeChecker.remote.model`      | 远程 API 模型名称                   | -              |
-| `codeChecker.autoUpdate`        | 启用自动更新                        | `true`         |
-| `codeChecker.updateDebounceMs`  | 防抖时间（毫秒）                      | `2000`         |
-| `codeChecker.statusBarPosition` | 状态栏位置（left/right）             | `right`        |
-| `codeChecker.systemPrompt`      | AI 系统提示词                      | 见 package.json |
+| 设置                               | 描述                            | 默认值            |
+| -------------------------------- | ----------------------------- | -------------- |
+| `codeChecker.aiProvider`         | AI 服务提供商（local=本地, remote=远程） | `local`        |
+| `codeChecker.local.model`        | 本地 Ollama 模型名称                | `llama2`       |
+| `codeChecker.remote.endpoint`    | 远程 API 地址                     | -              |
+| `codeChecker.remote.apiKey`      | 远程 API 密钥（可选）                 | -              |
+| `codeChecker.remote.model`       | 远程 API 模型名称                   | -              |
+| `codeChecker.autoUpdate`         | 启用自动更新                        | `true`         |
+| `codeChecker.updateDebounceMs`   | 防抖时间（毫秒）                      | `2000`         |
+| `codeChecker.statusBarPosition`  | 状态栏位置（left/right）             | `right`        |
+| `codeChecker.codeFileExtensions` | 需要检查的代码文件后缀名列表                | 见 package.json |
+| `codeChecker.systemPrompt`       | AI 系统提示词                      | 见 package.json |
 
 ## 🔌 开发者 API
 
