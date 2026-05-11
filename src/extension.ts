@@ -2,6 +2,14 @@ import * as vscode from 'vscode';
 import { AIService, getConfigFromVSCode } from './aiService';
 import { getScoreLabel, getScoreColor } from './scoreSystem';
 
+export interface CodeCheckerAPI {
+  getCurrentScore: () => number;
+  checkCodeQuality: () => Promise<number>;
+  getScoreColor: (score: number) => string;
+  getScoreLabel: (score: number) => string;
+  checkCodeWithText: (code: string, languageId?: string) => Promise<number>;
+}
+
 let aiService: AIService | undefined;
 let statusBarItem: vscode.StatusBarItem | undefined;
 let debounceTimer: NodeJS.Timeout | null = null;
@@ -27,7 +35,7 @@ function createStatusBarItem(context: vscode.ExtensionContext): vscode.StatusBar
   return statusBarItem;
 }
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): CodeCheckerAPI {
   console.log('代码检查器已激活！');
 
   try {
@@ -72,6 +80,14 @@ export function activate(context: vscode.ExtensionContext) {
     console.error('扩展激活错误:', error);
     vscode.window.showErrorMessage(`代码检查器激活失败: ${error}`);
   }
+
+  return {
+    getCurrentScore,
+    checkCodeQuality,
+    getScoreColor,
+    getScoreLabel,
+    checkCodeWithText
+  };
 }
 
 function debounceCheckCodeQuality() {
@@ -92,10 +108,10 @@ function debounceCheckCodeQuality() {
   }, debounceMs);
 }
 
-async function checkCodeQuality() {
+export async function checkCodeQuality(): Promise<number> {
   const editor = vscode.window.activeTextEditor;
   if (!editor || !statusBarItem) {
-    return;
+    return -1;
   }
 
   const documentUri = editor.document.uri.toString();
@@ -110,7 +126,7 @@ async function checkCodeQuality() {
     statusBarItem.text = '$(code) 非代码文件';
     statusBarItem.color = new vscode.ThemeColor('statusBar.foreground');
     currentScore = -1;
-    return;
+    return -1;
   }
 
   statusBarItem.text = '$(sync~spin) 检查中...';
@@ -133,12 +149,27 @@ async function checkCodeQuality() {
       currentDocumentUri = documentUri;
       updateStatusBarItem(score);
     }
+    return score;
   } catch (error) {
     console.error('代码质量检查错误:', error);
     if (statusBarItem) {
       statusBarItem.text = '$(error) 检查失败';
       statusBarItem.color = new vscode.ThemeColor('statusBar.foreground');
     }
+    return -1;
+  }
+}
+
+export async function checkCodeWithText(code: string, languageId?: string): Promise<number> {
+  try {
+    if (!aiService) {
+      aiService = new AIService(getConfigFromVSCode());
+    }
+    const score = await aiService.checkCodeQuality(code, []);
+    return score;
+  } catch (error) {
+    console.error('代码质量检查错误:', error);
+    return -1;
   }
 }
 

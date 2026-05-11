@@ -10,6 +10,9 @@ out/
 # VSCode extension package
 *.vsix
 
+# Test API folder
+test-api/
+
 # Logs
 *.log
 npm-debug.log*

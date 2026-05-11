@@ -1,6 +1,6 @@
 <div align="center" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
   <img src="ai-code-checker-title.png" alt="LOGO" width="400">
-    <img src="https://raw.githubusercontent.com/MRoldL001/AI-Code-Checker/main/chobits.png" alt="Chobits" height="155">
+  <img src="https://raw.githubusercontent.com/MRoldL001/AI-Code-Checker/main/chobits.png" alt="Chobits" height="155">
 </div>
 
 <br/>
@@ -80,8 +80,31 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 
 ## 🔌 开发者 API
 
-| 函数                     | 描述                    |
-| ---------------------- | --------------------- |
-| `getCurrentScore()`    | 获取当前分数（0-100，未检查则为-1） |
-| `getScoreColor(score)` | 根据分数获取 hex 颜色值        |
-| `getScoreLabel(score)` | 根据分数获取等级              |
+其他 VSCode 扩展可以通过以下 API 调用本插件的功能。
+
+### 获取 API 实例
+
+```typescript
+const extension = vscode.extensions.getExtension('MRoldL001.chobits-ai-code-checker');
+if (extension) {
+  // 确保扩展已激活
+  if (!extension.isActive) {
+    await extension.activate();
+  }
+
+  const api = extension.exports;
+  // 现在可以使用 api 对象调用以下方法
+}
+```
+
+### API 方法
+
+| 方法                                     | 描述                  | 返回值                      |
+| -------------------------------------- | ------------------- | ------------------------ |
+| `getCurrentScore()`                    | 获取当前激活文档的代码质量分数     | `number` (0-100，未检查则为-1) |
+| `checkCodeQuality()`                   | 检查当前激活文档的代码质量并更新状态栏 | `Promise<number>`        |
+| `getScoreColor(score)`                 | 根据分数获取 hex 颜色值      | `string`                 |
+| `getScoreLabel(score)`                 | 根据分数获取等级标签          | `string`                 |
+| `checkCodeWithText(code, languageId?)` | 检查传入的任意代码字符串        | `Promise<number>`        |
+
+# 

@@ -2,7 +2,7 @@
   "name": "chobits-ai-code-checker",
   "displayName": "Chobits AI Code Checker",
   "description": "Smart Code Quality Checker: AI Scoring & Colorful Status Bar.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "MRoldL001",
   "icon": "ai-code-checker.png",
   "repository": {
