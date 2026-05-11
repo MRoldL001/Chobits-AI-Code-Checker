@@ -1,6 +1,6 @@
 <div align="center" style="display: flex; justify-content: center; align-items: center; gap: 20px;">
   <img src="ai-code-checker-title.png" alt="LOGO" width="400">
-    <img src="https://raw.githubusercontent.com/MRoldL001/AI-Code-Checker/main/chobits.png" alt="Chobits" height="100">
+    <img src="https://raw.githubusercontent.com/MRoldL001/AI-Code-Checker/main/chobits.png" alt="Chobits" height="155">
 </div>
 
 <br/>
