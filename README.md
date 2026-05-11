@@ -13,11 +13,9 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 
 ## ✨ 功能
 
-- 彩色分数显示（红 → 橙 → 黄 → 蓝 → 绿）
-- AI集成（本地 Ollama 或远程 API）
+- 彩色分数显示
+- 切换本地 Ollama 或远程 API
 - 自动更新分数（支持配置防抖时间）
-- VS Code Problems 集成（AI 参考 linter 报错评分）
-- 只检查代码文件（支持自定义后缀名列表）
 - 快捷键（Ctrl+Alt+E / Cmd+Alt+E）
 - 可配置的系统提示词
 
@@ -52,7 +50,7 @@ An AI-powered VSCode extension that checks code quality and displays colorful sc
 #### 本地模型（推荐）
 
 1. 安装 [Ollama](https://ollama.ai/)
-2. 下载模型：`ollama pull llama2`（或你喜欢的其他模型）
+2. 下载模型：`ollama pull [模型名]`
 3. 启动 Ollama：`ollama serve`
 4. 设置 `codeChecker.aiProvider` 为 `local`
 5. 设置 `codeChecker.local.model` 为你的模型名称
