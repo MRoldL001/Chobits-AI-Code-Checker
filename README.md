@@ -107,4 +107,3 @@ if (extension) {
 | `getScoreLabel(score)`                 | 根据分数获取等级标签          | `string`                 |
 | `checkCodeWithText(code, languageId?)` | 检查传入的任意代码字符串        | `Promise<number>`        |
 
-# 
